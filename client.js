@@ -1,5 +1,4 @@
-const employees = [
-  {
+const employees = [{
     name: 'Atticus',
     employeeNumber: '2405',
     annualSalary: '47000',
@@ -39,75 +38,74 @@ const employees = [
 // This is not a race. Everyone on your team should understand what is happening.
 // Ask questions when you don't.
 
-console.log( employees );
+//console.log( employees );
 
 //creating final object (output of function)
-let finalPay = {
-  name: "",
-  bonusPercentage: 0,
-  totalCompensation: 0,
-  totalBonus: 0 
-}
 
-function reviewRatingBonus(name){
+
+function getOneBonus(employee) {
   let bonus = 0;
-  if (employee.reviewRating <= 2) {
-    bonus += 0;
-  }//end if for 2star 
-  else if (employee.reviewRating === 3) {
-    bonus += (employee.annualSalary * .04);
-  }//end else if for 3star
-  else if (employee.reviewRating === 4) {
-    bonus += (employee.annualSalary * .06);
-  }//end else if for 4star
-  else(employee.reviewRating === 5) {
-    bonus += (employee.annualSalary * .1)
-  }//end else if for 5star
-  return bonus;
-}
-
-//function that takes in employee name and has output of object
-function getBonus() {
-  //create variables
   const maxBonus = .13;
   const minBonus = 0;
-//loop through employees array to find name match
-for (let i = 0; i < employees.length; i++) {
-  // if (name === employee[i].name) {
-    let bonus = 0;//running total
+  for (let i = 0; i < employees.length; i++) {
+    if (employee === employees[i].name) {
+      if (employees[i].reviewRating <= 2) { //if conditional for reviewRating
+        bonus += 0;
+      } //end if for 2star 
+      else if (employees[i].reviewRating === 3) {
+        bonus += .04;
+      } //end else if for 3star
+      else if (employees[i].reviewRating === 4) {
+        bonus += .06;
+      } //end else if for 4star
+      else if (employees[i].reviewRating === 5) {
+        bonus += .1;
+      } //end else if for 5star
+      //if conditional for digits
+      if (employees[i].employeeNumber.length <= 4) {
+        bonus += .15;
+      }
 
-    if (employees[i].reviewRating <= 2) {//if conditional for reviewRating
-      bonus += 0;
-    }//end if for 2star 
-    else if (employees[i].reviewRating === 3) {
-      bonus += .04;
-    }//end else if for 3star
-    else if (employees[i].reviewRating === 4) {
-      bonus += .06;
-    }//end else if for 4star
-    else(employees[i].reviewRating === 5) {
-      bonus +=  .1;
-    }//end else if for 5star
-    //if conditional for digits
-    if(employees[i].employeeNumber.length <= 4){
-      bonus += .15;
-    }
+      //if conditional for annual income
+      if (employees[i].annualSalary > 65000) {
+        bonus -= .01;
+      }
 
-    //if conditional for annual income
-    if(employees[i].annualSalary > 65000){
-      bonus -= .01;
-    }
-
-    if(bonus > maxBonus){
-      bonus = maxBonus;
-    }
-    else if(bonus < minBonus){
-      bonus = minBonus;
-    }
+      if (bonus > maxBonus) {
+        bonus = maxBonus;
+      } else if (bonus < minBonus) {
+        bonus = minBonus;
+      }
       
+      let finalPayForEmployee = {
+        name: employee,
+        bonusPercentage: bonus,
+        totalCompensation: (employees[i].annualSalary * bonus) + (employees[i].annualSalary*1),
+        totalBonus: Math.round(employees[i].annualSalary * bonus)
+    };
     
-  // }//end if accessing name
+    console.log(finalPayForEmployee);
+    }
+    
+  } //end for loop
   
-}//end for
-}//end getBonus
+} //end function
 
+getOneBonus('Jem');
+//function that takes in employee name and has output of object
+// function getAllBonus() {
+//   //create variables
+// //loop through employees array to find name match
+// for (let i = 0; i < employees.length; i++) {
+//   getOneBonus(employees[i].name)
+
+
+//for (let employee of employees)
+
+
+
+
+// }//end if accessing name
+
+// }//end for
+// }//end getBonus
