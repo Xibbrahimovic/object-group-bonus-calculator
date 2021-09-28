@@ -67,7 +67,7 @@ function reviewRatingBonus(name){
 }
 
 //function that takes in employee name and has output of object
-function getBonus(name) {
+function getBonus() {
   //create variables
   const maxBonus = .13;
   const minBonus = 0;
@@ -95,10 +95,17 @@ for (let i = 0; i < employees.length; i++) {
 
     //if conditional for annual income
     if(employees[i].annualSalary > 65000){
-      bonus -= .01;``
+      bonus -= .01;
+    }
+
+    if(bonus > maxBonus){
+      bonus = maxBonus;
+    }
+    else if(bonus < minBonus){
+      bonus = minBonus;
     }
       
-  
+    
   // }//end if accessing name
   
 }//end for
