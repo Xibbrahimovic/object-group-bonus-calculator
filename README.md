@@ -1,4 +1,4 @@
-# Bonus Calculator App
+˜# Bonus Calculator App
 
 You are going to write a single JavaScript file to automatically calculate employee bonus for a company.
 
