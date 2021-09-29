@@ -1,4 +1,5 @@
-const employees = [{
+const employees = [
+  {
     name: 'Atticus',
     employeeNumber: '2405',
     annualSalary: '47000',
@@ -63,7 +64,7 @@ function getOneBonus(employee) {
       } //end else if for 5star
       //if conditional for digits
       if (employees[i].employeeNumber.length <= 4) {
-        bonus += .15;
+        bonus += .05;
       }
 
       //if conditional for annual income
@@ -84,28 +85,21 @@ function getOneBonus(employee) {
         totalBonus: Math.round(employees[i].annualSalary * bonus)
     };
     
-    console.log(finalPayForEmployee);
+    return finalPayForEmployee;
     }
     
   } //end for loop
   
 } //end function
 
-getOneBonus('Jem');
 //function that takes in employee name and has output of object
-// function getAllBonus() {
+function getAllBonus() {
 //   //create variables
 // //loop through employees array to find name match
-// for (let i = 0; i < employees.length; i++) {
-//   getOneBonus(employees[i].name)
+for (let i = 0; i < employees.length; i++) {
+  console.log(getOneBonus(employees[i].name));
+}
+}
+console.log(getOneBonus('Atticus'));
 
-
-//for (let employee of employees)
-
-
-
-
-// }//end if accessing name
-
-// }//end for
-// }//end getBonus
+getAllBonus();
